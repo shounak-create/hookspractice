@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import MyContext from './Context';
+import Renders from './Renders';
+import UseContexts from './useContexts';
+import store from './Employees';
+import { Add_Task } from './Employees/employees';
 
 function App() {
+  store.dispatch(Add_Task({name:"task1"}))
+  console.log("store",store);
+  const Context = {
+    name:"shounka",
+    roll:23,
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyContext.Provider value={Context}>
+      <div>
+        {/* <UseContexts /> */}
+        <Renders />
+      </div>
+    </MyContext.Provider>
   );
 }
 
